@@ -10,15 +10,15 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d/
+      - ./conf/nginx/conf.d:/etc/nginx/conf.d/
       - ./app:/var/www
     networks:
       - web-network
   docker-php:
-    image: php:8.3-fpm
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
+#    image: php:8.3-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: docker-php
     volumes:
       - ./app:/var/www
